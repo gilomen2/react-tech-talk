@@ -1,0 +1,58 @@
+#headlines {
+    width: 30%;
+}
+#headlines .headlines-container {
+    padding-left: 0;
+    -webkit-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.15);
+    border: 1px solid #ccc;
+    background: #fff;
+}
+#headlines .headlines-container .headline {
+    list-style: none;
+    color: #000;
+    position: relative;
+    border-bottom: 1px solid #ccc;
+    font-size: 1.05em;
+    line-height: 1.5em;
+}
+#headlines .headlines-container .headline:last-of-type {
+    border-bottom: none;
+}
+#headlines .headlines-container .headline .title-wrap {
+    z-index: 10;
+    transition: color 0.25s ease-in-out;
+    -moz-transition: color 0.25s ease-in-out;
+    -webkit-transition: color 0.25s ease-in-out;
+    padding: 85px 30px;
+    position: relative;
+}
+#headlines .headlines-container .headline .title-wrap.active {
+    color: #fff;
+}
+#headlines .headlines-container .headline .title-wrap.hovered {
+    color: #fff;
+}
+#headlines .headlines-container .headline .title-wrap .title {
+    text-decoration: underline;
+}
+#headlines .headlines-container .headline .headline-bg {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transition: opacity 0.25s ease-in-out;
+    -moz-transition: opacity 0.25s ease-in-out;
+    -webkit-transition: opacity 0.25s ease-in-out;
+}
+#headlines .headlines-container .headline .headline-bg.active {
+    opacity: 1;
+    color: #fff;
+}
+#headlines .headlines-container .headline .headline-bg.hovered {
+    opacity: 1;
+    color: #fff;
+}
