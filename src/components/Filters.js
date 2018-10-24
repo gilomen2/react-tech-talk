@@ -4,14 +4,18 @@ import "../styles/Filters.css";
 export class Filters extends Component {
   render() {
     const {currentFilter, onSelectFilter} = this.props;
-    const children = React.Children.map(this.props.children, (child) => {
-      return React.cloneElement(child, {
-        isActive: child.props.name === currentFilter,
-        onSelect: () => onSelectFilter(child.props.name)
-      });
+    const newChildren = React.Children.map(this.props.children, (child) => {
+      if(child.type === Filter) {
+        return React.cloneElement(child, {
+          isActive: child.props.name === currentFilter,
+          onSelect: () => onSelectFilter(child.props.name)
+        });
+      } else {
+        return child;
+      }
     });
-    return <div className="filters">{children}</div>;
+    return <div className="filters">{newChildren}</div>;
   }
 }
 
-export const Filter = ({name, isActive, onSelect}) => <button onClick={() => onSelect(name)} className={isActive && 'active'}>{name}</button>;
+export const Filter = ({name, isDisabled, isActive, onSelect}) => <button disabled={isDisabled} onClick={() => onSelect(name)} className={isActive ? 'active' : ''}>{name}</button>;

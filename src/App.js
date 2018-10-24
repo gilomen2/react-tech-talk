@@ -22,7 +22,8 @@ class App extends Component {
       });
       this.setState({
         articles: cleaned,
-        currentFilter: category
+        currentFilter: category,
+        currentArticle: 0
       });
     } catch (e) {
       console.error(e.message);
@@ -55,10 +56,10 @@ class App extends Component {
         <main>
           <Filters currentFilter={this.state.currentFilter} onSelectFilter={this.getArticles}>
             <Filter name={'science'} />
-            <Filter name={'business'} />
+            <Filter isDisabled name={'business'} />
             <Filter name={'entertainment'} />
-            <Filter name={'health'} />
             <Filter name={'technology'} />
+            <Filter name={'health'} />
             <Filter name={'sports'} />
           </Filters>
           <div className={'news-feed'}>

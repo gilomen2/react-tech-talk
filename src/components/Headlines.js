@@ -1,24 +1,34 @@
 import React, { Component } from 'react';
-import {withContext} from '../App';
+import { AppContext } from '../App';
 import '../styles/Headlines.css';
 
-export const Headlines  = withContext(({articles, currentArticle, setCurrentArticle}) => {
-  return (
-    <section id={'headlines'}>
-      <div className={'headlines-container'}>
-        {articles.map((article, i) => (
-          <Headline
-            title={article.title}
-            index={i}
-            setCurrent={setCurrentArticle}
-            isCurrent={currentArticle === i}
-            image={article.urlToImage}
-          />
-        ))}
-      </div>
-    </section>
-  );
-});
+export class Headlines extends Component {
+  render() {
+    const { setCurrentArticle } = this.props;
+    return (
+      <AppContext.Consumer>
+        {context => {
+          return (
+            <section id={'headlines'}>
+              <div className={'headlines-container'}>
+                {context.articles.map((article, i) => (
+                  <Headline
+                    title={article.title}
+                    index={i}
+                    key={`headline-${i}`}
+                    setCurrent={setCurrentArticle}
+                    isCurrent={context.currentArticle === i}
+                    image={article.urlToImage}
+                  />
+                ))}
+              </div>
+            </section>
+          );
+        }}
+      </AppContext.Consumer>
+    );
+  }
+}
 
 class Headline extends Component {
   state = {
